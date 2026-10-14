@@ -1,0 +1,470 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Inglês do Dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: phone-first single column. One lesson per screen: entenda → exemplos → pratique → desafio → áudio → resultado para print. Lesson list at the bottom. */
+:root{
+  --bg:#f3f5f2; --card:#ffffff; --ink:#1f2a24; --muted:#5f6b64; --line:#dde3dd;
+  --accent:#1d6f52; --accent-soft:#e1efe8; --warm:#b5651d; --warm-soft:#f8ebdc;
+  --good:#1f7a4d; --good-bg:#e2f3e9; --bad:#b4412f; --bad-bg:#f8e5e1;
+  --display:"Fraunces", Georgia, serif; --body:"Nunito Sans", "Segoe UI", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --card:#1b201d; --ink:#e7ece8; --muted:#9aa6a0; --line:#2c3430;
+  --accent:#5cc49a; --accent-soft:#1b3127; --warm:#e9a564; --warm-soft:#3a2a1a;
+  --good:#6fd39f; --good-bg:#183326; --bad:#f08a76; --bad-bg:#3a1f1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --card:#1b201d; --ink:#e7ece8; --muted:#9aa6a0; --line:#2c3430;
+  --accent:#5cc49a; --accent-soft:#1b3127; --warm:#e9a564; --warm-soft:#3a2a1a;
+  --good:#6fd39f; --good-bg:#183326; --bad:#f08a76; --bad-bg:#3a1f1a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 var(--body);padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:640px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+.label{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+header{padding-block:22px 6px;display:grid;gap:6px}
+header h1{font-size:30px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{font:600 12px/1 var(--body);padding:7px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.date{color:var(--muted);font-size:15px}
+section{margin-top:22px;display:grid;gap:10px}
+section>h3{font-size:21px;display:flex;align-items:center;gap:8px}
+.explain{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px}
+.explain p{margin:0}
+.ex{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ex b{font-weight:700}
+.ex i{grid-column:1;color:var(--muted);font-size:15px}
+.ex button{grid-row:1/span 2;grid-column:2;border:1px solid var(--line);background:var(--bg);border-radius:999px;width:42px;height:42px;font-size:15px}
+.ex button:hover{border-color:var(--accent);color:var(--accent)}
+.instr{margin:0;font-weight:700;color:var(--muted);font-size:15px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:10px}
+.q p{margin:0;font-weight:700}
+.q .row{display:flex;gap:8px;flex-wrap:wrap}
+.q input{flex:1 1 200px;min-width:0;font:inherit;font-size:17px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.q input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.q.ok{border-color:var(--good)} .q.no{border-color:var(--bad)}
+.btn{border:1.5px solid var(--accent);background:var(--accent);color:var(--card);border-radius:10px;padding:10px 16px;font-weight:800;font-size:15px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.fb{font-size:15px;border-radius:10px;padding:10px 12px;display:grid;gap:8px}
+.fb.ok{background:var(--good-bg);color:var(--good)} .fb.no{background:var(--bad-bg);color:var(--bad)}
+.fb .self{display:flex;gap:8px;flex-wrap:wrap}
+.fb .self button{border:1px solid currentColor;background:transparent;border-radius:8px;padding:6px 10px;font-size:14px;font-weight:700;color:inherit}
+.extra{background:var(--warm-soft);border-radius:16px;padding:16px;display:grid;gap:10px}
+.extra p{margin:0}
+textarea{font:inherit;font-size:16px;width:100%;min-height:90px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);resize:vertical}
+.model{background:var(--card);border-radius:10px;padding:10px 12px;font-size:15px}
+.audio{border:2px dashed var(--accent);border-radius:16px;padding:16px;display:grid;gap:6px}
+.audio p{margin:0}
+.result{background:var(--accent);color:var(--card);border-radius:18px;padding:20px;display:grid;gap:10px;text-align:center}
+.result .big{font:700 46px/1 var(--display)}
+.result input{font:inherit;font-size:16px;text-align:center;padding:9px 12px;border-radius:10px;border:0;background:var(--card);color:var(--ink);width:100%;max-width:280px;justify-self:center}
+.result p{margin:0}
+.locked{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;display:grid;gap:8px}
+.list{display:grid;gap:6px}
+.li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.li .n{font:500 12px/1 var(--mono);color:var(--muted);min-width:30px}
+.li .t{min-width:0;font-size:15px}
+.li .s{font-size:13px;color:var(--muted);white-space:nowrap}
+.li.done .s{color:var(--good);font-weight:700}
+.li.cur{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.li:disabled{opacity:.55;cursor:default}
+.more{justify-self:start}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="top"><span class="label">Teacher Ana · Inglês do dia</span><span class="pill" id="streak">0 lições feitas</span></div>
+    <h1 id="title">Inglês do Dia</h1>
+    <div class="date" id="date"></div>
+  </header>
+  <main id="main"></main>
+  <section>
+    <h3>Todas as lições</h3>
+    <div class="list" id="list"></div>
+    <button class="btn ghost more" id="more">Ver lições anteriores</button>
+  </section>
+</div>
+
+<script>
+const HOL={"2026-10-12":"Feriado · Nossa Senhora Aparecida","2026-11-02":"Feriado · Finados","2026-11-20":"Feriado · Consciência Negra"};
+const L=[
+{d:"2026-10-08",t:"Verb to be (afirmativa)",e:["O verbo *to be* significa *ser* ou *estar*.","I am (I'm) • You are (You're) • He/She/It is (He's/She's/It's) • We are (We're) • They are (They're)","Usamos para nome, profissão, lugar e como estamos."],
+ x:[["I'm Carlos. I'm an analyst.","Eu sou o Carlos. Sou analista."],["She's in a meeting.","Ela está em reunião."],["We're from Goiânia.","Nós somos de Goiânia."],["They're very busy today.","Eles estão muito ocupados hoje."]],
+ q:["Complete com am, is ou are:","1. I ___ a supervisor.","2. Maria ___ in the office.","3. We ___ a team.","4. The meeting ___ at 9.","5. They ___ tired today."],a:["1. am","2. is","3. are","4. is","5. are"],
+ xq:"Escreva 3 frases sobre você: nome, cargo e setor.",xa:"Exemplo: I'm Ana. I'm a coordinator. I'm in the HR department.",
+ au:"Grave um áudio de 20 segundos: “Hello! My name is ___. I'm a ___. I'm in the ___ department.”"},
+{d:"2026-10-09",t:"Verb to be (negativa e perguntas)",e:["Negativa: coloque *not* depois do verbo → I'm not • He isn't • They aren't.","Pergunta: inverta a ordem → *Are you* busy? *Is he* in the office?","Respostas curtas: Yes, I am. / No, I'm not."],
+ x:[["I'm not late.","Não estou atrasado."],["The manager isn't here today.","O gerente não está aqui hoje."],["Are you ready? — Yes, I am.","Você está pronto? — Sim."],["Is the report ready? — No, it isn't.","O relatório está pronto? — Não."]],
+ q:["Transforme:","1. He is in the meeting. (negativa)","2. You are new here. (pergunta)","3. They are from São Paulo. (negativa)","4. Is she the manager? (resposta curta: sim)","5. Are you busy? (resposta curta: não)"],a:["1. He isn't in the meeting.","2. Are you new here?","3. They aren't from São Paulo.","4. Yes, she is.","5. No, I'm not."],
+ xq:"Escreva 2 perguntas com *to be* para fazer a um colega novo.",xa:"Exemplo: Are you from Goiânia? Is this your first job?",
+ au:"Pergunte e responda no áudio: “Are you busy today?” — “Yes, I am.” ou “No, I'm not.”"},
+{d:"2026-10-13",t:"Alfabeto e e-mails",e:["No trabalho a gente precisa soletrar nomes e e-mails.","Letras que confundem: *A* (ei), *E* (i), *I* (ai), *G* (dji), *J* (djei), *R* (ar), *Y* (uai).","Símbolos: @ = *at* • . = *dot* • _ = *underscore* • - = *dash*."],
+ x:[["How do you spell your name?","Como se soletra seu nome?"],["It's S-I-L-V-A.","É S-I-L-V-A."],["My email is ana dot silva at company dot com.","Meu e-mail é ana.silva@company.com."],["Can you repeat, please?","Pode repetir, por favor?"]],
+ q:["Como se fala em inglês?","1. @","2. . (no e-mail)","3. a letra I","4. a letra E","5. “Como se soletra seu sobrenome?”"],a:["1. at","2. dot","3. “ai”","4. “i”","5. How do you spell your last name?"],
+ xq:"Escreva como você falaria o seu e-mail do trabalho.",xa:"Exemplo: joao dot pereira at company dot com dot br",
+ au:"Soletre seu nome completo em inglês."},
+{d:"2026-10-14",t:"Números e telefone",e:["Cuidado com *13 (thirteen)* x *30 (thirty)*.","No -teen a força vai no final: thir-TEEN. No -ty, no começo: THIR-ty.","Telefone: falamos número por número. 0 = *zero* ou *oh*."],
+ x:[["What's your phone number?","Qual é o seu telefone?"],["It's six two, nine eight seven six…","É 62 9 876…"],["We have fifteen people in the team.","Temos quinze pessoas na equipe."],["It costs fifty reais.","Custa cinquenta reais."]],
+ q:["Escreva por extenso:","1. 13","2. 30","3. 17","4. 70","5. 100"],a:["1. thirteen","2. thirty","3. seventeen","4. seventy","5. one hundred"],
+ xq:"Escreva por extenso: 2.450",xa:"two thousand four hundred and fifty",
+ au:"Fale um número de telefone em inglês (pode ser inventado)."},
+{d:"2026-10-15",t:"Dias, meses e datas",e:["Dias: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.","Datas usam números ordinais: first (1st), second (2nd), third (3rd), fourth (4th), fifth (5th)…","*on* + dia: on Monday • *in* + mês: in October."],
+ x:[["Today is Thursday, October fifteenth.","Hoje é quinta, 15 de outubro."],["The training is on Monday.","O treinamento é na segunda."],["My vacation is in December.","Minhas férias são em dezembro."],["When is your birthday?","Quando é seu aniversário?"]],
+ q:["1. Que dia vem depois de Tuesday?","2. Como se diz “outubro”?","3. Escreva o ordinal 2nd por extenso.","4. The meeting is ___ Friday.","5. My vacation is ___ January."],a:["1. Wednesday","2. October","3. second","4. on","5. in"],
+ xq:"Escreva a data do seu aniversário em inglês.",xa:"Exemplo: My birthday is on March twenty-first.",
+ au:"“Today is ___. My birthday is on ___.”"},
+{d:"2026-10-16",r:1,t:"Revisão: alfabeto, números e datas",e:["Revisão da semana: soletrar, números e datas.","Lembre: *on* + dia • *in* + mês • @ = *at*."],
+ x:[["How do you spell it?","Como se soletra?"],["What's the date today?","Qual a data de hoje?"],["It's on Friday, October sixteenth.","É na sexta, 16 de outubro."]],
+ q:["1. Como se diz @?","2. Escreva por extenso: 19","3. Escreva por extenso: 90","4. “A reunião é na segunda.”","5. “Meu aniversário é em julho.”"],a:["1. at","2. nineteen","3. ninety","4. The meeting is on Monday.","5. My birthday is in July."],
+ xq:"Escreva a data 31/12 em inglês.",xa:"December thirty-first.",
+ au:"Soletre seu nome e diga a data do seu aniversário."},
+{d:"2026-10-19",t:"As horas",e:["Pergunta: *What time is it?* → Resposta: *It's* + hora.","9:00 = nine o'clock • 9:30 = nine thirty • 9:15 = nine fifteen.","Compromissos: *at* + hora → The meeting is at 10."],
+ x:[["It's eight o'clock.","São oito horas."],["It's two forty-five.","São duas e quarenta e cinco."],["I start work at seven thirty.","Começo a trabalhar às sete e meia."],["Lunch is at twelve.","O almoço é ao meio-dia."]],
+ q:["Escreva em inglês:","1. 7:00","2. 10:30","3. 3:15","4. “Começo a trabalhar às 8.”","5. “Que horas são?”"],a:["1. It's seven o'clock.","2. It's ten thirty.","3. It's three fifteen.","4. I start work at eight.","5. What time is it?"],
+ xq:"“A reunião é às 14:45 na quinta-feira.”",xa:"The meeting is at two forty-five on Thursday.",
+ au:"Sua rotina com horas: “I wake up at ___. I start work at ___. I finish work at ___.”"},
+{d:"2026-10-20",t:"Profissões e a/an",e:["*a* antes de som de consoante: a manager, a driver.","*an* antes de som de vogal: an engineer, an assistant, an analyst.","Em inglês SEMPRE usamos a/an com profissão: I'm *an* engineer (e não “I'm engineer”)."],
+ x:[["I'm an operator.","Sou operador."],["She's a supervisor.","Ela é supervisora."],["He's an electrician.","Ele é eletricista."],["What do you do? — I'm a technician.","O que você faz? — Sou técnico."]],
+ q:["a ou an?","1. ___ engineer","2. ___ manager","3. ___ analyst","4. ___ driver","5. ___ assistant"],a:["1. an","2. a","3. an","4. a","5. an"],
+ xq:"É “a hour” ou “an hour”? Por quê?",xa:"an hour — o H não tem som, então a palavra começa com som de vogal.",
+ au:"Responda: “What do you do?” com sua profissão e setor."},
+{d:"2026-10-21",t:"This, that, these, those + plural",e:["*this* = este (perto, 1) • *these* = estes (perto, 2+)","*that* = aquele (longe, 1) • *those* = aqueles (longe, 2+)","Plural: quase sempre +s. Atenção: box → boxes • person → people • man → men • woman → women."],
+ x:[["This is my desk.","Esta é a minha mesa."],["These are the new reports.","Estes são os relatórios novos."],["That is the meeting room.","Aquela é a sala de reunião."],["Those people are from finance.","Aquelas pessoas são do financeiro."]],
+ q:["1. ___ is my computer. (perto)","2. ___ are my colleagues. (longe)","3. Plural de box","4. Plural de person","5. ___ documents here are important. (perto)"],a:["1. This","2. Those","3. boxes","4. people","5. These"],
+ xq:"Corrija: “This papers is on the table.”",xa:"These papers are on the table.",
+ au:"Mostre sua mesa: “This is my ___. These are my ___.”"},
+{d:"2026-10-22",t:"There is / there are",e:["*There is* = tem/há (singular) • *There are* = tem/há (plural).","Negativa: there isn't / there aren't. Pergunta: Is there…? / Are there…?","Erro comum: “Have a meeting today” ❌ → *There's a meeting today* ✅"],
+ x:[["There's a meeting at 10.","Tem uma reunião às 10."],["There are ten people in our class.","Tem dez pessoas na nossa turma."],["There isn't a printer on this floor.","Não tem impressora neste andar."],["Is there a parking lot here?","Tem estacionamento aqui?"]],
+ q:["1. ___ a problem with the printer.","2. ___ three new employees.","3. Negativa: There is a meeting today.","4. Pergunta: There are chairs in the room.","5. “Tem um restaurante perto da empresa.”"],a:["1. There is","2. There are","3. There isn't a meeting today.","4. Are there chairs in the room?","5. There is a restaurant near the company."],
+ xq:"Descreva seu setor em 3 frases com there is/there are.",xa:"Exemplo: There are 12 people in my department. There is a big table. There isn't a window.",
+ au:"Descreva sua sala de trabalho em 3 frases."},
+{d:"2026-10-23",r:1,t:"Revisão: horas, a/an, this/that, there is",e:["Revisão da semana!","a/an com profissão • this/these (perto) • that/those (longe) • there is (1) / there are (2+)."],
+ x:[["I'm an analyst.","Sou analista."],["Those computers are new.","Aqueles computadores são novos."],["There are two printers.","Tem duas impressoras."]],
+ q:["1. “Sou analista.”","2. “Aqueles computadores são novos.”","3. “Tem duas impressoras no escritório.”","4. Escreva: 6:30","5. a ou an? ___ office"],a:["1. I'm an analyst.","2. Those computers are new.","3. There are two printers in the office.","4. It's six thirty.","5. an office"],
+ xq:"Escreva 3 frases sobre sua empresa usando this, there are e a/an.",xa:"Exemplo: This is my company. There are 200 employees. I'm an operator.",
+ au:"Apresente seu local de trabalho: “This is my company. There are ___ people. I'm a/an ___.”"},
+{d:"2026-10-26",t:"Present simple: rotina",e:["Usamos o *present simple* para rotina e fatos.","Com I/you/we/they o verbo não muda: I work, we start, they finish.","Verbos úteis: work, start, finish, have lunch, go, check, send."],
+ x:[["I work in production.","Trabalho na produção."],["We start at 7.","Começamos às 7."],["They have lunch at 12.","Eles almoçam ao meio-dia."],["I check my emails every morning.","Vejo meus e-mails toda manhã."]],
+ q:["Complete com o verbo:","1. I ___ (work) in logistics.","2. We ___ (start) at 8.","3. They ___ (have) lunch at 12.","4. I ___ (go) to work by bus.","5. You ___ (send) the reports."],a:["1. work","2. start","3. have","4. go","5. send"],
+ xq:"Escreva 3 frases sobre a sua rotina no trabalho.",xa:"Exemplo: I start at 7. I check the orders. I have lunch at 11:30.",
+ au:"Fale 3 coisas que você faz todos os dias no trabalho."},
+{d:"2026-10-27",t:"Present simple: he, she, it",e:["Com *he, she, it* o verbo ganha *-s*: she works, he starts.","-es depois de o, sh, ch, x: go → goes • finish → finishes.","Consoante + y → ies: study → studies. Irregular: have → *has*."],
+ x:[["My manager works from 8 to 5.","Meu gerente trabalha das 8 às 5."],["She finishes at 6.","Ela termina às 6."],["He goes to the factory on Mondays.","Ele vai à fábrica às segundas."],["The company has 300 employees.","A empresa tem 300 funcionários."]],
+ q:["1. She ___ (work) in HR.","2. He ___ (go) to São Paulo every month.","3. My boss ___ (have) a lot of meetings.","4. The meeting ___ (finish) at 11.","5. Paulo ___ (study) English."],a:["1. works","2. goes","3. has","4. finishes","5. studies"],
+ xq:"Escreva 3 frases sobre a rotina de um colega.",xa:"Exemplo: Marcos starts at 6. He works in maintenance. He has lunch at 11.",
+ au:"Fale sobre a rotina de alguém: “He/She works… He/She starts…”"},
+{d:"2026-10-28",t:"Do / does: perguntas e negativas",e:["Negativa: I/you/we/they *don't* + verbo • he/she/it *doesn't* + verbo (sem -s!).","Pergunta: *Do* you work…? / *Does* she work…?","Respostas curtas: Yes, I do. / No, she doesn't."],
+ x:[["I don't work on Saturdays.","Não trabalho aos sábados."],["She doesn't speak English… yet!","Ela não fala inglês… ainda!"],["Do you like your job? — Yes, I do.","Você gosta do seu trabalho? — Sim."],["Does he work here? — No, he doesn't.","Ele trabalha aqui? — Não."]],
+ q:["1. Negativa: I work on Sundays.","2. Negativa: She works in sales.","3. Pergunta: You start at 8.","4. Pergunta: He has a car.","5. Corrija: She doesn't works here."],a:["1. I don't work on Sundays.","2. She doesn't work in sales.","3. Do you start at 8?","4. Does he have a car?","5. She doesn't work here."],
+ xq:"Escreva 2 perguntas para entrevistar um colega sobre a rotina dele.",xa:"Exemplo: What time do you start work? Do you have lunch at the company?",
+ au:"Responda: “Do you work on Saturdays? Does your manager speak English?”"},
+{d:"2026-10-29",t:"Advérbios de frequência",e:["always (sempre) • usually (geralmente) • often (com frequência) • sometimes (às vezes) • rarely (raramente) • never (nunca)","Posição: antes do verbo → I *always* check… Mas depois do to be → I'm *always* on time."],
+ x:[["I always arrive at 7:30.","Sempre chego às 7:30."],["We usually have a meeting on Mondays.","Geralmente temos reunião às segundas."],["She's never late.","Ela nunca se atrasa."],["I sometimes work on Saturdays.","Às vezes trabalho aos sábados."]],
+ q:["Coloque o advérbio no lugar certo:","1. I check my email. (always)","2. He is late. (never)","3. We have lunch together. (sometimes)","4. They work at night. (rarely)","5. She is busy. (usually)"],a:["1. I always check my email.","2. He is never late.","3. We sometimes have lunch together.","4. They rarely work at night.","5. She is usually busy."],
+ xq:"Responda com frase completa: How often do you have meetings?",xa:"Exemplo: I usually have meetings on Mondays and Thursdays.",
+ au:"Fale 3 frases sobre o seu trabalho com always, sometimes e never."},
+{d:"2026-10-30",r:1,t:"Revisão: present simple",e:["Revisão da semana!","I/you/we/they work • he/she/it work*s*","don't / doesn't + verbo sem -s • Do…? / Does…?"],
+ x:[["He works in the warehouse.","Ele trabalha no almoxarifado."],["Does she like her job?","Ela gosta do trabalho?"],["I'm never late.","Nunca me atraso."]],
+ q:["Corrija:","1. He work in the warehouse.","2. Do she like her job?","3. I don't works on Sunday.","4. They goes to the gym.","5. I am late never."],a:["1. He works in the warehouse.","2. Does she like her job?","3. I don't work on Sundays.","4. They go to the gym.","5. I am never late."],
+ xq:"Escreva 4 frases sobre a sua rotina usando 2 advérbios de frequência.",xa:"Exemplo: I always wake up at 6. I start work at 7:30. I usually have lunch at 12. I never work on Sundays.",
+ au:"Áudio de 30 segundos: a sua rotina de segunda-feira."},
+{d:"2026-11-03",t:"Possessivos",e:["my (meu) • your (seu) • his (dele) • her (dela) • our (nosso) • their (deles)","Para pessoas usamos *'s*: Maria's office = a sala da Maria.","*his* = dele, *her* = dela. Depende do dono, não do objeto."],
+ x:[["This is my badge.","Este é o meu crachá."],["Her name is Juliana.","O nome dela é Juliana."],["His car is black.","O carro dele é preto."],["Our team is small.","Nossa equipe é pequena."],["Carlos's desk is next to the window.","A mesa do Carlos fica ao lado da janela."]],
+ q:["1. João → ___ office is on the 2nd floor.","2. Ana → ___ email is ana@…","3. Nós → ___ manager is very nice.","4. Eles → ___ shift starts at 6.","5. “O carro do Pedro”"],a:["1. His","2. Her","3. Our","4. Their","5. Pedro's car"],
+ xq:"Corrija: “Is this the computer of Marcos?”",xa:"Is this Marcos's computer?",
+ au:"Fale sobre 2 colegas: “Her name is… His name is…”"},
+{d:"2026-11-04",t:"Preposições de tempo: in, on, at",e:["*at* + horas: at 9, at noon, at night.","*on* + dias e datas: on Monday, on November 4th.","*in* + meses, anos, partes do dia: in November, in 2026, in the morning."],
+ x:[["The meeting is at 3 pm.","A reunião é às 15h."],["I have training on Wednesday.","Tenho treinamento na quarta."],["My vacation is in January.","Minhas férias são em janeiro."],["I work in the morning.","Trabalho de manhã."]],
+ q:["Complete com in, on ou at:","1. ___ Friday","2. ___ 8 o'clock","3. ___ December","4. ___ the afternoon","5. ___ November 15th"],a:["1. on","2. at","3. in","4. in","5. on"],
+ xq:"Complete: “I started at the company ___ 2019, ___ March, ___ a Monday.”",xa:"in, in, on",
+ au:"Responda usando in, on e at: “When is your next vacation? What time do you start work?”"},
+{d:"2026-11-05",t:"Preposições de lugar",e:["in (dentro) • on (em cima) • under (embaixo) • next to (ao lado)","between (entre) • in front of (em frente) • behind (atrás)"],
+ x:[["The documents are in the drawer.","Os documentos estão na gaveta."],["My phone is on the desk.","Meu celular está na mesa."],["The printer is next to the door.","A impressora fica ao lado da porta."],["The cafeteria is between HR and finance.","O refeitório fica entre o RH e o financeiro."]],
+ q:["Traduza:","1. “A caneta está em cima da mesa.”","2. “O relatório está na gaveta.”","3. “O banheiro é ao lado da cozinha.”","4. “Meu carro está atrás do prédio.”","5. “A recepção é em frente ao elevador.”"],a:["1. The pen is on the desk.","2. The report is in the drawer.","3. The bathroom is next to the kitchen.","4. My car is behind the building.","5. The reception is in front of the elevator."],
+ xq:"Explique em 2 frases onde fica a sua mesa ou o seu posto de trabalho.",xa:"Exemplo: My desk is on the second floor. It's next to the window, between Paulo and Rita.",
+ au:"Diga onde estão 3 objetos perto de você agora."},
+{d:"2026-11-06",r:1,t:"Revisão: possessivos e preposições",e:["Revisão da semana!","my/your/his/her/our/their • 's para pessoas • at (hora) / on (dia) / in (mês) • in, on, next to, between…"],
+ x:[["Her office is on the second floor.","A sala dela é no segundo andar."],["Paulo's badge is on the desk.","O crachá do Paulo está na mesa."]],
+ q:["1. “A sala dela é no segundo andar.”","2. Complete: ___ Monday ___ 10 am","3. “O crachá do Paulo está na mesa.”","4. “Nosso treinamento é em dezembro.”","5. “A impressora fica entre as duas janelas.”"],a:["1. Her office is on the second floor.","2. on, at","3. Paulo's badge is on the desk.","4. Our training is in December.","5. The printer is between the two windows."],
+ xq:"Escreva um convite curto para uma reunião com dia, hora e lugar.",xa:"Exemplo: The meeting is on Tuesday at 2 pm in room 3, next to HR.",
+ au:"Convide um colega para um café: dia, hora e lugar."},
+{d:"2026-11-09",t:"Can / can't",e:["*can* = poder, saber, conseguir. Igual para todos: I can, she can (sem -s!).","Negativa: can't. Pergunta: Can you…?","Pedido educado: *Can you help me, please?* / *Could you…?* (mais formal)."],
+ x:[["I can speak a little English.","Sei falar um pouco de inglês."],["She can't come to the meeting today.","Ela não pode vir à reunião hoje."],["Can you send me the file?","Você pode me mandar o arquivo?"],["Could you repeat, please?","Poderia repetir, por favor?"]],
+ q:["1. “Eu sei usar o Excel.”","2. “Ele não pode vir amanhã.”","3. “Você pode me ajudar?”","4. Corrija: She cans drive.","5. Corrija: Can you to help me?"],a:["1. I can use Excel.","2. He can't come tomorrow.","3. Can you help me?","4. She can drive.","5. Can you help me?"],
+ xq:"Escreva 2 pedidos educados com Could you…?",xa:"Exemplo: Could you send me the report? Could you call me later?",
+ au:"Fale 2 coisas que você sabe fazer e 1 que não sabe: “I can… I can't…”"},
+{d:"2026-11-10",t:"Imperativo: instruções e avisos",e:["Para instruções usamos só o verbo: *Open* the file. *Wait* here.","Negativa: *Don't* + verbo → Don't touch. Don't park here.","Para soar educado, acrescente *please*."],
+ x:[["Please sign here.","Assine aqui, por favor."],["Wear your safety glasses.","Use seus óculos de segurança."],["Don't use your phone here.","Não use o celular aqui."],["Turn off the machine before cleaning.","Desligue a máquina antes de limpar."]],
+ q:["Traduza:","1. “Feche a porta, por favor.”","2. “Não fume aqui.”","3. “Use o capacete.” (helmet)","4. “Espere aqui.”","5. “Não esqueça seu crachá.” (forget, badge)"],a:["1. Please close the door.","2. Don't smoke here.","3. Wear your helmet.","4. Wait here.","5. Don't forget your badge."],
+ xq:"Escreva 3 instruções de segurança do seu setor em inglês.",xa:"Exemplo: Wear your gloves. Don't run. Turn off the machine after use.",
+ au:"Dê 3 instruções para um visitante estrangeiro na empresa."},
+{d:"2026-11-11",t:"Present continuous: agora",e:["Para ações *acontecendo agora*: am/is/are + verbo com *-ing*.","I'm working. She's talking on the phone. They're having lunch.","Palavras-chave: now, right now, at the moment."],
+ x:[["I'm working on the report now.","Estou trabalhando no relatório agora."],["She's talking to the director.","Ela está falando com o diretor."],["We're waiting for the truck.","Estamos esperando o caminhão."],["What are you doing?","O que você está fazendo?"]],
+ q:["1. I ___ (write) an email.","2. She ___ (talk) to a client.","3. They ___ (wait) for the bus.","4. Pergunta: you / work / now?","5. Negativa: He is using the computer."],a:["1. am writing","2. is talking","3. are waiting","4. Are you working now?","5. He isn't using the computer."],
+ xq:"Escreva o que 3 pessoas estão fazendo agora (no trabalho ou em casa).",xa:"Exemplo: My boss is talking on the phone. Rita is printing a document. I'm studying English!",
+ au:"Responda com 2 frases: “What are you doing now?”"},
+{d:"2026-11-12",t:"Rotina x agora",e:["*Present simple* = rotina, sempre: I work in sales.","*Present continuous* = agora ou temporário: I'm working from home this week.","Dica: every day, usually, always → simple. Now, today, this week → continuous."],
+ x:[["I usually drive, but today I'm taking the bus.","Geralmente vou de carro, mas hoje vou de ônibus."],["She works in HR, but this month she's helping in finance.","Ela é do RH, mas este mês está ajudando no financeiro."],["We're having a meeting right now.","Estamos em reunião agora."]],
+ q:["1. I ___ (check) my email every morning.","2. Look! The manager ___ (come).","3. She ___ (not work) today. She's sick.","4. They usually ___ (finish) at 5.","5. This week we ___ (prepare) the audit."],a:["1. check","2. is coming","3. isn't working","4. finish","5. are preparing"],
+ xq:"Escreva 1 frase com “usually” e 1 com “today” sobre o seu trabalho.",xa:"Exemplo: I usually work in the office. Today I'm working at the warehouse.",
+ au:"Responda: “What do you usually do on Fridays? What are you doing today?”"},
+{d:"2026-11-13",r:1,t:"Revisão: can, imperativo e -ing",e:["Revisão da semana!","can + verbo (sem to) • Don't + verbo • am/is/are + -ing (agora) • verbo + s (rotina, he/she)."],
+ x:[["Can you send the file?","Pode mandar o arquivo?"],["Don't park here.","Não estacione aqui."],["I'm working now.","Estou trabalhando agora."]],
+ q:["Corrija:","1. Can you sends the file?","2. Don't to park here.","3. I working now.","4. She is work in HR every day.","5. Look, it rains!"],a:["1. Can you send the file?","2. Don't park here.","3. I'm working now.","4. She works in HR every day.","5. Look, it's raining!"],
+ xq:"Escreva uma mensagem para o seu chefe: você está no trânsito e vai chegar uns 15 minutos atrasado.",xa:"Exemplo: Hi, I'm stuck in traffic. I'm sorry, I'm 15 minutes late. See you soon!",
+ au:"Grave essa mensagem em áudio, como se fosse para o seu chefe."},
+{d:"2026-11-16",t:"Was / were (passado do to be)",e:["I/he/she/it → *was* • you/we/they → *were*.","Negativa: wasn't / weren't. Pergunta: Was she…? / Were you…?"],
+ x:[["I was at the training yesterday.","Eu estava no treinamento ontem."],["The meeting was very long.","A reunião foi muito longa."],["We were very busy last week.","Estávamos muito ocupados semana passada."],["Were you at the office on Friday?","Você estava no escritório na sexta?"]],
+ q:["1. I ___ tired yesterday.","2. They ___ in São Paulo last week.","3. The report ___ ready on Monday.","4. Negativa: We were late.","5. Pergunta: She was at the meeting."],a:["1. was","2. were","3. was","4. We weren't late.","5. Was she at the meeting?"],
+ xq:"Escreva 2 frases sobre o seu fim de semana com was/were.",xa:"Exemplo: My weekend was great. The weather was very hot.",
+ au:"Responda: “How was your weekend? Where were you?”"},
+{d:"2026-11-17",t:"Passado: verbos regulares",e:["Verbos regulares no passado: + *ed* → work → worked • start → started.","É igual para todas as pessoas.","Pronúncia: o *-ed* só vira sílaba depois de T ou D: started (STAR-tid). Worked = “uórkt”."],
+ x:[["I worked late yesterday.","Trabalhei até tarde ontem."],["We started the project in August.","Começamos o projeto em agosto."],["She called the client this morning.","Ela ligou para o cliente hoje cedo."],["They finished the inventory last week.","Eles terminaram o inventário semana passada."]],
+ q:["Escreva o passado:","1. work","2. call","3. finish","4. study (atenção!)","5. stop (atenção!)"],a:["1. worked","2. called","3. finished","4. studied","5. stopped"],
+ xq:"Escreva 3 coisas que você fez ontem no trabalho (verbos regulares).",xa:"Exemplo: I checked the emails. I called a supplier. I organized the files.",
+ au:"“Yesterday I worked… I called… I finished…”"},
+{d:"2026-11-18",t:"Passado: verbos irregulares",e:["Alguns verbos muito usados são irregulares e precisam ser decorados:","go → went • have → had • do → did • make → made • get → got","see → saw • come → came • take → took • send → sent • buy → bought"],
+ x:[["I went to the bank yesterday.","Fui ao banco ontem."],["We had a meeting this morning.","Tivemos reunião hoje de manhã."],["She sent the report on Friday.","Ela mandou o relatório na sexta."],["They came to the office early.","Eles chegaram cedo no escritório."]],
+ q:["Escreva o passado:","1. go","2. have","3. send","4. make","5. take"],a:["1. went","2. had","3. sent","4. made","5. took"],
+ xq:"Complete: “Yesterday I ___ (get) to work at 7, ___ (have) coffee and ___ (see) my manager.”",xa:"got, had, saw",
+ au:"Conte 3 coisas que você fez ontem usando went, had e saw."},
+{d:"2026-11-19",r:1,t:"Revisão: passado",e:["Amanhã é feriado, então hoje é a revisão da semana!","was/were • verbos regulares (-ed) • irregulares (went, had, sent…)"],
+ x:[["I was tired yesterday.","Eu estava cansado ontem."],["We went to the training.","Fomos ao treinamento."]],
+ q:["Traduza:","1. “Eu estava cansado ontem.”","2. “Nós fomos ao treinamento.”","3. “Ela enviou o e-mail.”","4. “Eles trabalharam até as 8.”","5. “A reunião foi boa.”"],a:["1. I was tired yesterday.","2. We went to the training.","3. She sent the email.","4. They worked until 8.","5. The meeting was good."],
+ xq:"Escreva 4 frases sobre o seu último fim de semana.",xa:"Exemplo: My weekend was good. I visited my mother. We had lunch together. I watched a movie.",
+ au:"Conte em 30 segundos como foi o seu último fim de semana."},
+{d:"2026-11-23",t:"Passado: perguntas e negativas (did)",e:["Negativa: *didn't* + verbo normal → I didn't go (e não “didn't went”).","Pergunta: *Did* you…? + verbo normal → Did you send the email?","Com palavra de pergunta: What did you do? Where did you go?"],
+ x:[["I didn't see the email.","Não vi o e-mail."],["She didn't come to work yesterday.","Ela não veio trabalhar ontem."],["Did you finish the report? — Yes, I did.","Você terminou o relatório? — Sim."],["What did you do on the weekend?","O que você fez no fim de semana?"]],
+ q:["1. Negativa: I went to the meeting.","2. Negativa: He sent the file.","3. Pergunta: You had lunch.","4. Pergunta: She called the client.","5. Corrija: Did you went to the bank?"],a:["1. I didn't go to the meeting.","2. He didn't send the file.","3. Did you have lunch?","4. Did she call the client?","5. Did you go to the bank?"],
+ xq:"Escreva 3 perguntas sobre o fim de semana de um colega.",xa:"Exemplo: What did you do? Where did you go? Did you watch the game?",
+ au:"Responda: “What did you do yesterday after work?”"},
+{d:"2026-11-24",t:"Expressões de passado",e:["yesterday (ontem) • last week/month/year (semana/mês/ano passado) • two days ago (há dois dias)","*last night* = ontem à noite.","*ago* vem depois: three years *ago*."],
+ x:[["I joined the company five years ago.","Entrei na empresa há cinco anos."],["Last month we had an audit.","Mês passado tivemos auditoria."],["I talked to him last night.","Falei com ele ontem à noite."],["The truck arrived two hours ago.","O caminhão chegou há duas horas."]],
+ q:["Traduza:","1. “semana passada”","2. “há três dias”","3. “ontem à noite”","4. “Eu comecei aqui em 2021.”","5. “Ela saiu há 10 minutos.” (leave → left)"],a:["1. last week","2. three days ago","3. last night","4. I started here in 2021.","5. She left ten minutes ago."],
+ xq:"Conte sua história profissional em 3 frases com ago, in e last.",xa:"Exemplo: I started working at 18. I joined this company four years ago. Last year I became a supervisor.",
+ au:"Responda: “When did you start working here?” usando ago."},
+{d:"2026-11-25",t:"Small talk: o fim de semana",e:["Perguntas clássicas de segunda e sexta:","*How was your weekend?* → It was great / good / OK / tiring.","*What did you do?* → I visited my family / I stayed at home / I went to the farm."],
+ x:[["How was your weekend? — It was relaxing.","Como foi seu fim de semana? — Foi tranquilo."],["I went to a barbecue with my family.","Fui a um churrasco com a família."],["Not really, I stayed home.","Nada demais, fiquei em casa."],["Sounds great!","Que legal!"]],
+ q:["1. Ordene: was / weekend / How / your?","2. Ordene: did / do / What / you?","3. Traduza: “Fiquei em casa.”","4. Traduza: “Visitei meus pais.”","5. Seu colega diz “I went to the beach.” Responda com 2 palavras."],a:["1. How was your weekend?","2. What did you do?","3. I stayed at home.","4. I visited my parents.","5. Sounds great! / How nice!"],
+ xq:"Escreva um diálogo de 4 linhas sobre o fim de semana.",xa:"Exemplo: A: How was your weekend? B: It was great! A: What did you do? B: I went to a barbecue.",
+ au:"Grave sua resposta: “How was your weekend? What did you do?”"},
+{d:"2026-11-26",t:"Some / any",e:["Contáveis: a box, two boxes. Incontáveis: water, coffee, money, *information*.","*some* em frases afirmativas: We need some paper.","*any* em negativas e perguntas: There isn't any coffee. Do you have any questions?","Atenção: “informations” não existe. É sempre *information*."],
+ x:[["We need some paper for the printer.","Precisamos de papel para a impressora."],["Do you have any questions?","Vocês têm alguma pergunta?"],["There isn't any coffee left.","Não tem mais café."],["Can I have some information?","Pode me dar uma informação?"]],
+ q:["1. We have ___ new clients.","2. Are there ___ problems?","3. There isn't ___ milk.","4. I need ___ help.","5. Corrija: I need some informations."],a:["1. some","2. any","3. any","4. some","5. I need some information."],
+ xq:"Faça uma lista de compras para o escritório com some (3 itens).",xa:"Exemplo: We need some paper, some coffee and some pens.",
+ au:"Responda e faça uma pergunta de volta: “Do you have any questions about English?”"},
+{d:"2026-11-27",r:1,t:"Revisão: passado e some/any",e:["Revisão da semana!","didn't + verbo normal • Did…? + verbo normal • ago depois do tempo • some (afirmativa) / any (negativa e pergunta)."],
+ x:[["I didn't go to work.","Não fui trabalhar."],["How was your weekend?","Como foi seu fim de semana?"]],
+ q:["Corrija (ou diga se está certa):","1. I didn't went to work.","2. Did she called you?","3. I started here 3 years ago.","4. We need some informations.","5. How was you weekend?"],a:["1. I didn't go to work.","2. Did she call you?","3. Está certa!","4. We need some information.","5. How was your weekend?"],
+ xq:"Escreva 4 frases contando a sua semana de trabalho.",xa:"Exemplo: On Monday I had a meeting. On Tuesday I didn't go to the factory. I finished the report on Wednesday. It was a busy week!",
+ au:"Conte 3 coisas que você fez esta semana no trabalho."},
+{d:"2026-11-30",t:"How much / how many",e:["*How many* + coisas contáveis (plural): How many people? How many boxes?","*How much* + incontáveis: How much time? How much water?","*How much is it?* = Quanto custa?"],
+ x:[["How many employees are there?","Quantos funcionários tem?"],["How much time do we have?","Quanto tempo temos?"],["How much is this? — It's 30 reais.","Quanto custa? — 30 reais."],["How many hours do you work per day?","Quantas horas você trabalha por dia?"]],
+ q:["much ou many?","1. How ___ people work here?","2. How ___ money do we need?","3. How ___ meetings do you have today?","4. How ___ coffee do you drink?","5. How ___ is the ticket?"],a:["1. many","2. much","3. many","4. much","5. much"],
+ xq:"Escreva 2 perguntas para um fornecedor com how much e how many.",xa:"Exemplo: How many units do you have in stock? How much is the delivery?",
+ au:"Responda: “How many people work in your department? How many hours do you sleep?”"},
+{d:"2026-12-01",t:"Going to: planos",e:["Para planos já decididos: am/is/are + *going to* + verbo.","I'm going to travel in December. We're going to have a meeting on Friday.","Negativa: I'm not going to… Pergunta: Are you going to…?"],
+ x:[["I'm going to take a vacation in January.","Vou tirar férias em janeiro."],["The company is going to hire new people.","A empresa vai contratar gente nova."],["We're going to have a party at the end of the year.","Vamos ter uma festa no fim do ano."],["What are you going to do this weekend?","O que você vai fazer neste fim de semana?"]],
+ q:["1. I ___ (visit) my family at Christmas.","2. She ___ (start) a new course.","3. We ___ (finish) the project next week.","4. Pergunta: you / travel / in December?","5. Negativa: They are going to come."],a:["1. am going to visit","2. is going to start","3. are going to finish","4. Are you going to travel in December?","5. They aren't going to come."],
+ xq:"Escreva 3 planos para o fim de ano.",xa:"Exemplo: I'm going to visit my parents. I'm going to rest. I'm going to watch movies with my kids.",
+ au:"Responda: “What are you going to do at the end of the year?”"},
+{d:"2026-12-02",t:"Will: ofertas e promessas",e:["Usamos *will* ('ll) para decisões na hora, ofertas e promessas.","I'll call you back. I'll help you. I'll send it now.","Negativa: *won't* (= will not)."],
+ x:[["The phone is ringing — I'll answer it.","O telefone está tocando — eu atendo."],["I'll send you the report today.","Te mando o relatório hoje."],["Don't worry, I won't forget.","Pode deixar, não vou esquecer."],["I'll have a coffee, please.","Vou querer um café, por favor."]],
+ q:["Traduza:","1. “Eu te ajudo.” (oferta)","2. “Eu te ligo depois.”","3. “Vou mandar agora.” (decisão na hora)","4. “Não vou esquecer.”","5. Complete: “It's hot here.” — “I ___ open the window.”"],a:["1. I'll help you.","2. I'll call you later.","3. I'll send it now.","4. I won't forget.","5. I'll"],
+ xq:"Qual a diferença entre “I'm going to call him” e “I'll call him”?",xa:"Going to = plano decidido antes. Will = decisão na hora ou promessa.",
+ au:"Ofereça ajuda a um colega em 2 frases com I'll."},
+{d:"2026-12-03",t:"Comparativos",e:["Palavras curtas: + *er* → cheap → cheaper • fast → faster • big → bigger • easy → easier.","Palavras longas: *more* + adjetivo → more expensive, more important.","Irregulares: good → *better* • bad → *worse*. Sempre com *than*."],
+ x:[["This machine is faster than the old one.","Esta máquina é mais rápida que a antiga."],["The new system is easier.","O sistema novo é mais fácil."],["São Paulo is bigger than Goiânia.","São Paulo é maior que Goiânia."],["This supplier is more expensive than that one.","Este fornecedor é mais caro que aquele."]],
+ q:["1. cheap →","2. important →","3. good →","4. easy →","5. “Meu carro é mais velho que o seu.”"],a:["1. cheaper","2. more important","3. better","4. easier","5. My car is older than yours."],
+ xq:"Compare duas cidades ou dois empregos em 2 frases.",xa:"Exemplo: Goiânia is smaller than São Paulo, but it's calmer. My job now is better than my first job.",
+ au:"Compare segunda-feira e sexta-feira no trabalho: “Monday is ___er than Friday.”"},
+{d:"2026-12-04",r:1,t:"Revisão: quantidades, futuro e comparação",e:["Revisão da semana!","how many (contáveis) / how much (incontáveis) • going to (plano) • will (na hora/promessa) • -er / more + than."],
+ x:[["I'm going to travel in January.","Vou viajar em janeiro."],["I'll open the door.","Eu abro a porta."]],
+ q:["1. How ___ chairs are there?","2. “Vou viajar em janeiro.” (plano)","3. “Eu abro a porta.” (oferta na hora)","4. “Este curso é mais fácil que o outro.”","5. Corrija: This is more cheap."],a:["1. many","2. I'm going to travel in January.","3. I'll open the door.","4. This course is easier than the other one.","5. This is cheaper."],
+ xq:"Escreva 3 frases: 1 plano (going to), 1 promessa (will) e 1 comparação.",xa:"Exemplo: I'm going to rest in January. I'll study every day. English is easier now!",
+ au:"Fale sobre seus planos para dezembro em 30 segundos."},
+{d:"2026-12-07",t:"Superlativos",e:["O “mais” de todos: *the* + *-est* → the biggest, the cheapest.","Palavras longas: *the most* + adjetivo → the most important.","Irregulares: the best (o melhor) • the worst (o pior)."],
+ x:[["This is our biggest client.","Este é nosso maior cliente."],["December is the busiest month.","Dezembro é o mês mais corrido."],["She's the best supervisor in the company.","Ela é a melhor supervisora da empresa."],["The most important thing is safety.","O mais importante é a segurança."]],
+ q:["1. big → the ___","2. fast → the ___","3. good → the ___","4. important → the ___","5. “O pior dia da semana é segunda.”"],a:["1. biggest","2. fastest","3. best","4. most important","5. The worst day of the week is Monday."],
+ xq:"Responda: “What was the best moment of your year?”",xa:"Exemplo: The best moment of my year was my vacation in July.",
+ au:"Fale 2 superlativos sobre sua empresa ou sua cidade."},
+{d:"2026-12-08",t:"Would like: pedidos educados",e:["*I'd like* (= I would like) = eu gostaria. Bem mais educado que *I want*.","Oferecer: *Would you like* a coffee? → Yes, please. / No, thank you.","*I'd like to* + verbo: I'd like to schedule a meeting."],
+ x:[["I'd like a coffee, please.","Eu gostaria de um café, por favor."],["Would you like some water?","Você gostaria de uma água?"],["I'd like to talk to the manager.","Gostaria de falar com o gerente."],["Would you like to join us for lunch?","Quer almoçar com a gente?"]],
+ q:["1. Deixe mais educado: I want a sandwich.","2. Deixe mais educado: I want to speak to Carlos.","3. Ofereça um café:","4. Aceite educadamente:","5. Recuse educadamente:"],a:["1. I'd like a sandwich, please.","2. I'd like to speak to Carlos.","3. Would you like a coffee?","4. Yes, please.","5. No, thank you."],
+ xq:"Escreva um diálogo curto recebendo um visitante estrangeiro (ofereça algo para beber).",xa:"Exemplo: A: Welcome! Would you like a coffee or some water? B: Water, please. A: Here you are.",
+ au:"Grave como você receberia um visitante: “Welcome! Would you like…?”"},
+{d:"2026-12-09",t:"Inglês no telefone",e:["Atender: *Hello, [empresa], [seu nome] speaking.*","Pedir alguém: *Can I speak to…, please?* • Esperar: *One moment, please.*","Não entendeu? *Sorry, can you speak more slowly?* • Recado: *Can I take a message?*"],
+ x:[["Good morning, Rafael speaking.","Bom dia, Rafael falando."],["Can I speak to Mr. Smith, please?","Posso falar com o Sr. Smith?"],["He's not here right now. Can I take a message?","Ele não está. Quer deixar recado?"],["Sorry, can you repeat that?","Desculpe, pode repetir?"]],
+ q:["Complete:","1. Hello, Rafael ___.","2. Can I ___ to Mrs. Lima?","3. One ___, please.","4. Can I take a ___?","5. Can you speak more ___, please?"],a:["1. speaking","2. speak","3. moment","4. message","5. slowly"],
+ xq:"Escreva um diálogo de telefone de 4 linhas: alguém liga procurando o seu chefe, que não está.",xa:"Exemplo: A: Can I speak to Mr. Costa? B: Sorry, he's not here right now. Can I take a message? A: Yes, please ask him to call John. B: OK, I'll tell him.",
+ au:"Grave como você atenderia o telefone e anotaria um recado."},
+{d:"2026-12-10",t:"E-mail simples",e:["Abertura: *Hi [nome],* ou *Dear [nome],* (formal).","Motivo: *I'm writing to…* • Anexo: *Please find attached…*","Fechamento: *Thank you in advance.* / *Best regards,*"],
+ x:[["Hi John,","Olá, John,"],["Please find attached the report.","Segue em anexo o relatório."],["Could you confirm the date?","Você pode confirmar a data?"],["Best regards, Marcos","Atenciosamente, Marcos"]],
+ q:["Traduza:","1. “Segue em anexo a planilha.”","2. “Você pode confirmar?”","3. “Obrigado desde já.”","4. “Atenciosamente,”","5. “Estou escrevendo para pedir informações.”"],a:["1. Please find attached the spreadsheet.","2. Could you confirm?","3. Thank you in advance.","4. Best regards,","5. I'm writing to ask for information."],
+ xq:"Escreva um e-mail de 3 linhas pedindo a um fornecedor o prazo de entrega.",xa:"Exemplo: Hi Mr. Brown, I'm writing to ask about the delivery date of our order. Could you confirm it, please? Best regards, Ana",
+ au:"Leia em voz alta o e-mail que você escreveu."},
+{d:"2026-12-11",r:1,t:"Revisão: educação, telefone e e-mail",e:["Revisão da semana!","the -est / the most • I'd like / Would you like…? • … speaking • Please find attached…"],
+ x:[["I'd like some water, please.","Eu gostaria de uma água, por favor."],["One moment, please.","Um momento, por favor."]],
+ q:["1. “Esse é o melhor restaurante da cidade.”","2. Deixe mais educado: I want water.","3. Atenda o telefone com seu nome.","4. “Um momento, por favor.”","5. “Segue em anexo o relatório.”"],a:["1. This is the best restaurant in the city.","2. I'd like some water, please.","3. Hello, [seu nome] speaking.","4. One moment, please.","5. Please find attached the report."],
+ xq:"Escreva um e-mail convidando a equipe para a confraternização de fim de ano (dia, hora e lugar).",xa:"Exemplo: Hi team, I'd like to invite you to our end-of-year party on Friday, December 18th, at 7 pm at the restaurant next to the company. Best regards, Paula",
+ au:"Convide a equipe para a confraternização em um áudio."},
+{d:"2026-12-14",t:"Frases para reuniões",e:["Não entendeu? *Sorry, I don't understand. Can you repeat, please?*","Concordar: *I agree. / That's a good idea.*","Discordar com educação: *I'm not sure. / I see your point, but…* • Pedir a palavra: *Can I say something?*"],
+ x:[["Can you repeat that, please?","Pode repetir, por favor?"],["I agree with you.","Concordo com você."],["That's a good idea!","Boa ideia!"],["I'm not sure about that.","Não tenho certeza disso."],["Can I say something?","Posso falar uma coisa?"]],
+ q:["O que você diz quando…","1. não entendeu","2. concorda","3. acha a ideia boa","4. quer falar","5. não tem certeza"],a:["1. Sorry, I don't understand. Can you repeat, please?","2. I agree.","3. That's a good idea!","4. Can I say something?","5. I'm not sure."],
+ xq:"Discorde com educação: “We need to work on Saturday.”",xa:"Exemplo: I see your point, but I think we can finish on Friday.",
+ au:"Grave 3 frases de reunião: uma para concordar, uma para discordar e uma para pedir repetição."},
+{d:"2026-12-15",t:"Dando opinião",e:["*I think…* (eu acho) • *In my opinion…* • *I don't think…*","Pedir opinião: *What do you think?* • Justificar: *because…*","Erro comum: “I think that no” ❌ → *I don't think so* ✅"],
+ x:[["I think the new system is better.","Acho que o sistema novo é melhor."],["In my opinion, we need more training.","Na minha opinião, precisamos de mais treinamento."],["I don't think it's a good idea.","Não acho que seja uma boa ideia."],["What do you think? — I think so.","O que você acha? — Acho que sim."]],
+ q:["1. “Eu acho que sim.”","2. “Eu acho que não.”","3. “Na minha opinião, o curso é útil.”","4. “O que você acha?”","5. Corrija: I think that no."],a:["1. I think so.","2. I don't think so.","3. In my opinion, the course is useful.","4. What do you think?","5. I don't think so."],
+ xq:"Dê sua opinião sobre aprender inglês no trabalho em 2 frases com because.",xa:"Exemplo: I think English is important because the company works with foreign clients. In my opinion, it's difficult but useful.",
+ au:"Responda com sinceridade: “What do you think about our English class?”"},
+{d:"2026-12-16",t:"Small talk com estrangeiros",e:["*How are you?* → I'm fine, thanks. And you?","*Nice to meet you.* → Nice to meet you too.","Perguntas boas: *Where are you from? Is this your first time in Brazil? How was your trip?*"],
+ x:[["Nice to meet you!","Prazer em conhecer!"],["How was your trip?","Como foi a viagem?"],["Is this your first time in Brazil?","É sua primeira vez no Brasil?"],["You should try pão de queijo!","Você tem que provar pão de queijo!"],["Have a nice day!","Tenha um bom dia!"]],
+ q:["Responda ou pergunte:","1. How are you?","2. Nice to meet you.","3. Where are you from?","4. Pergunte se é a primeira vez dele no Brasil.","5. Deseje um bom dia."],a:["1. I'm fine, thanks. And you?","2. Nice to meet you too.","3. I'm from Brazil. (I'm from ___)","4. Is this your first time in Brazil?","5. Have a nice day!"],
+ xq:"Escreva 3 perguntas para fazer a um visitante estrangeiro na empresa.",xa:"Exemplo: Where are you from? How was your flight? Do you like Brazilian food?",
+ au:"Grave um diálogo imaginário recebendo um visitante (você faz as duas vozes!)."},
+{d:"2026-12-17",t:"Retrospectiva do ano",e:["Hoje juntamos passado e futuro!","Passado: *This year I learned… / I started… / I went…*","Futuro: *Next year I'm going to… / I'd like to…* • Votos: *Merry Christmas! Happy New Year!*"],
+ x:[["This year I started English classes.","Este ano comecei aulas de inglês."],["I learned a lot.","Aprendi muito."],["Next year I'm going to practice more.","Ano que vem vou praticar mais."],["I'd like to travel abroad.","Eu gostaria de viajar para fora."],["Happy holidays!","Boas festas!"]],
+ q:["Traduza:","1. “Este ano eu aprendi muito.”","2. “Ano que vem vou estudar mais.”","3. “Eu gostaria de viajar.”","4. “Feliz Natal!”","5. “Feliz Ano Novo!”"],a:["1. This year I learned a lot.","2. Next year I'm going to study more.","3. I'd like to travel.","4. Merry Christmas!","5. Happy New Year!"],
+ xq:"Escreva 3 frases sobre o seu 2026 e 2 metas para 2027.",xa:"Exemplo: This year I started English. I worked a lot. I went to the beach in July. Next year I'm going to study every day. I'd like to talk to a foreign client.",
+ au:"Grave sua retrospectiva: 2 coisas que você fez em 2026 e 1 plano para 2027."},
+{d:"2026-12-18",r:1,t:"Desafio final do ano",e:["Último dia do programa! Hoje o exercício mistura tudo o que vimos.","Faça com calma. Você aprendeu muito nestes dois meses!"],
+ x:[["I'm proud of my progress.","Tenho orgulho do meu progresso."],["See you next year!","Até o ano que vem!"]],
+ q:["Traduza:","1. “Eu sou supervisor e trabalho na produção.”","2. “Ela não trabalha aos sábados.”","3. “Ontem eu fui ao banco.”","4. “Estou escrevendo um e-mail agora.”","5. “Ano que vem vou fazer um curso.”"],a:["1. I'm a supervisor and I work in production.","2. She doesn't work on Saturdays.","3. Yesterday I went to the bank.","4. I'm writing an email now.","5. Next year I'm going to take a course."],
+ xq:"Escreva um parágrafo de 5 frases se apresentando: quem você é, sua rotina, algo que fez este ano e um plano.",xa:"Exemplo: My name is Carla. I'm an analyst in the finance department. I usually start work at 8. This year I started English classes. Next year I'm going to practice every day.",
+ au:"Grave um áudio de 1 minuto se apresentando, como no desafio extra. Vou ouvir todos! 🎉"}
+];
+
+
+const WD=["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"];
+const MO=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+const dt=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(Date.UTC(y,m-1,d,12))};
+const fmt=s=>{const x=dt(s);return WD[x.getUTCDay()]+", "+x.getUTCDate()+" de "+MO[x.getUTCMonth()]};
+const short=s=>{const x=dt(s);return String(x.getUTCDate()).padStart(2,"0")+"/"+String(x.getUTCMonth()+1).padStart(2,"0")};
+let today;try{today=new Date().toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"})}catch(e){today=new Date().toISOString().slice(0,10)}
+const PROF=(location.hash||"").toLowerCase()==="#prof";
+const open=i=>PROF||L[i].d<=today;
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const wa=s=>esc(s).replace(/\*([^*\n]+)\*/g,"<b>$1</b>").replace(/(^|[\s(])_([^_\n]+)_/g,"$1<i>$2</i>");
+
+let S={};try{S=JSON.parse(localStorage.getItem("ingles-do-dia")||"{}")}catch(e){S={}}
+const save=()=>{try{localStorage.setItem("ingles-do-dia",JSON.stringify(S))}catch(e){}};
+S.done=S.done||{};S.ans=S.ans||{};
+
+/* ---- answer checking ---- */
+const CONTR={"i'm":"i am","you're":"you are","he's":"he is","she's":"she is","it's":"it is","we're":"we are","they're":"they are","isn't":"is not","aren't":"are not","wasn't":"was not","weren't":"were not","don't":"do not","doesn't":"does not","didn't":"did not","can't":"can not","cannot":"can not","won't":"will not","i'll":"i will","you'll":"you will","we'll":"we will","i'd":"i would","there's":"there is","what's":"what is","that's":"that is","let's":"let us"};
+function norm(s){
+  s=String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”"]/g,"");
+  s=s.replace(/[.,!?;:]/g," ").replace(/\s+/g," ").trim();
+  return s.split(" ").map(w=>CONTR[w]||w).join(" ");
+}
+function variants(ans){
+  let a=ans.replace(/^\d+\.\s*/,"");
+  const out=new Set();
+  a.split(/\s\/\s/).forEach(p=>{
+    const noPar=p.replace(/\([^)]*\)/g,"").trim();
+    out.add(norm(noPar)); out.add(norm(p.replace(/[()]/g,"")));
+  });
+  if(/^está certa/i.test(a)){["esta certa","está certa","certa","correta","correct","certo","esta certo","está correta"].forEach(x=>out.add(norm(x)))}
+  out.delete("");return [...out];
+}
+const shown=s=>s.replace(/^\d+\.\s*/,"");
+
+let cur=0, score={};
+function pick(){
+  const h=(location.hash||"").match(/^#l(\d+)$/i);
+  if(h){const i=+h[1]-1;if(L[i]&&open(i))return i}
+  let i=-1;L.forEach((l,k)=>{if(l.d<=today)i=k});
+  return i<0?0:i;
+}
+
+function render(){
+  const l=L[cur],m=document.getElementById("main");
+  document.getElementById("title").textContent="Lição "+(cur+1)+": "+l.t;
+  document.getElementById("date").textContent=fmt(l.d)+(l.r?" · revisão da semana":"");
+  try{history.replaceState(null,"",PROF?"#prof":"#l"+(cur+1))}catch(e){}
+  if(!open(cur)){
+    m.innerHTML=`<div class="locked"><h3>Essa lição abre em ${short(l.d)}</h3><p>Volte no dia certinho! Enquanto isso, que tal refazer uma lição anterior?</p></div>`;
+    renderList();return;
+  }
+  const items=[];let instr="";
+  l.q.forEach(q=>{if(/^\d+\./.test(q))items.push(q);else instr=q});
+  score={};
+  m.innerHTML=`
+   <section><h3>📖 Entenda</h3><div class="explain">${l.e.map(x=>`<p>${wa(x)}</p>`).join("")}</div></section>
+   <section><h3>👂 Exemplos</h3><span class="label">Toque no ▶ para ouvir</span>
+     ${l.x.map((x,i)=>`<div class="ex"><b>${esc(x[0])}</b><i>${esc(x[1])}</i><button data-say="${i}" aria-label="Ouvir">▶</button></div>`).join("")}</section>
+   <section><h3>✍️ Pratique</h3>${instr?`<p class="instr">${wa(instr)}</p>`:""}<div id="qs" style="display:grid;gap:10px"></div></section>
+   <section><h3>⭐ Desafio extra</h3><div class="extra"><p>${wa(l.xq)}</p><label class="label" for="xt">Sua resposta</label><textarea id="xt" placeholder="Escreva aqui…"></textarea><button class="btn ghost" id="xm" style="justify-self:start">Ver exemplo</button><div id="xmodel"></div></div></section>
+   <section><h3>🎤 Áudio do dia</h3><div class="audio"><p>${wa(l.au)}</p><p class="label" style="text-transform:none;letter-spacing:0;font-size:14px">Grave e mande no grupo do WhatsApp.</p></div></section>
+   <section id="res"></section>`;
+  m.querySelectorAll("[data-say]").forEach(b=>b.onclick=()=>say(l.x[+b.dataset.say][0]));
+  const qs=document.getElementById("qs");
+  items.forEach((q,k)=>qs.appendChild(buildQ(l,q,k,items.length)));
+  const xt=document.getElementById("xt");const key="x"+cur;xt.value=S.ans[key]||"";xt.oninput=()=>{S.ans[key]=xt.value;save()};
+  document.getElementById("xm").onclick=()=>{document.getElementById("xmodel").innerHTML=`<div class="model"><b>Exemplo:</b> ${esc(l.xa)}</div>`};
+  updateResult(items.length);
+  renderList();
+}
+
+function say(t){try{const u=new SpeechSynthesisUtterance(t.replace(/—.*/,""));u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+
+function buildQ(l,q,k,total){
+  const box=document.createElement("div");box.className="q";const id="q"+cur+"-"+k;
+  box.innerHTML=`<p>${wa(q)}</p><div class="row"><label for="${id}" class="label" style="width:100%">Sua resposta</label><input id="${id}" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="btn">Conferir</button></div><div class="fb" hidden></div>`;
+  const inp=box.querySelector("input"),btn=box.querySelector(".btn"),fb=box.querySelector(".fb");
+  const ans=l.a[k];const ok=variants(ans);
+  const prev=S.ans[id];if(prev)inp.value=prev;
+  const mark=(good,self)=>{
+    score[k]=good;box.className="q "+(good?"ok":"no");fb.hidden=false;fb.className="fb "+(good?"ok":"no");
+    fb.innerHTML=good?`<b>${self?"Boa! Marcado como certo.":"Isso! ✅"}</b>`:`<b>Ainda não.</b><span>Resposta: <b>${esc(shown(ans))}</b></span><div class="self"><button>Escrevi certo, só de outro jeito</button><button>Tentar de novo</button></div>`;
+    if(!good){const [a,b]=fb.querySelectorAll(".self button");a.onclick=()=>mark(true,true);b.onclick=()=>{inp.value="";inp.focus();fb.hidden=true;box.className="q";delete score[k];updateResult(total)}}
+    updateResult(total);
+  };
+  const check=()=>{if(!inp.value.trim())return;S.ans[id]=inp.value;save();mark(ok.includes(norm(inp.value)),false)};
+  btn.onclick=check;inp.onkeydown=e=>{if(e.key==="Enter")check()};
+  return box;
+}
+
+function updateResult(total){
+  const r=document.getElementById("res");if(!r)return;
+  const n=Object.keys(score).length,c=Object.values(score).filter(Boolean).length;
+  if(n<total){r.innerHTML=`<p class="label" style="text-align:center">${n} de ${total} respondidas</p>`;return}
+  S.done[cur]=Math.max(S.done[cur]||0,c);save();
+  const msg=c===total?"Perfeito! 🎉":c>=total-1?"Muito bem! 👏":c>=Math.ceil(total/2)?"Bom trabalho! Revise as que errou.":"Continue! Leia a explicação de novo e refaça.";
+  r.innerHTML=`<div class="result"><span class="label" style="color:inherit;opacity:.8">Lição ${cur+1} · ${short(L[cur].d)}</span><div class="big">${c}/${total}</div><p>${msg}</p>
+    <label for="nm" class="label" style="color:inherit;opacity:.8">Seu nome</label><input id="nm" placeholder="Digite seu nome" value="${esc(S.name||"")}">
+    <p style="font-size:15px">📸 Tire um print desta tela e mande no grupo!</p></div>`;
+  const nm=document.getElementById("nm");nm.oninput=()=>{S.name=nm.value;save()};
+  renderList();
+}
+
+let showAll=false;
+function renderList(){
+  const box=document.getElementById("list");box.innerHTML="";
+  const doneN=Object.keys(S.done).length;
+  document.getElementById("streak").textContent=doneN+(doneN===1?" lição feita":" lições feitas");
+  const idx=L.map((l,i)=>i);
+  const lastOpen=idx.filter(open).pop()??0;
+  const vis=showAll?idx:idx.filter(i=>i>=lastOpen-4&&i<=lastOpen+2);
+  document.getElementById("more").hidden=showAll;
+  vis.forEach(i=>{
+    const l=L[i],b=document.createElement("button");const isOpen=open(i);
+    b.className="li"+(S.done[i]!=null?" done":"")+(i===cur?" cur":"");
+    b.disabled=!isOpen;
+    b.innerHTML=`<span class="n">${i+1}</span><span class="t">${esc(l.t)}</span><span class="s">${S.done[i]!=null?"✓ feita":isOpen?short(l.d):"abre "+short(l.d)}</span>`;
+    if(isOpen)b.onclick=()=>{cur=i;render();scrollTo({top:0,behavior:"smooth"})};
+    box.appendChild(b);
+  });
+}
+document.getElementById("more").onclick=()=>{showAll=true;renderList()};
+window.addEventListener("hashchange",()=>{const i=pick();if(i!==cur){cur=i;render()}});
+cur=pick();render();
+</script>
+
+</body></html>
